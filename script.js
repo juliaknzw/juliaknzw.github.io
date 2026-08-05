@@ -65,28 +65,37 @@
     if (e.key === "Escape") setIslandOpen(false);
   });
 
-  /* ---------- Dev / Creator mode switch ---------- */
-  var modeSwitch = document.querySelector(".mode-switch");
-  var modeButtons = document.querySelectorAll(".mode-btn");
+  /* ---------- Dev / Creator mode switch (iOS-style toggle, whole-site reskin) ---------- */
+  var iosSwitch = document.querySelector(".ios-switch");
+  var modeLabels = document.querySelectorAll(".mode-label");
   var devTrack = document.getElementById("dev-track");
   var creatorTrack = document.getElementById("creator-track");
   var trackForAnchor = { "dev-track": "dev", "creator-track": "creator", "founder": "creator" };
 
   function setMode(mode){
-    modeButtons.forEach(function(b){
-      var active = b.getAttribute("data-mode") === mode;
-      b.classList.toggle("active", active);
-      b.setAttribute("aria-selected", active ? "true" : "false");
+    var isCreator = mode === "creator";
+    document.documentElement.setAttribute("data-theme", isCreator ? "creator" : "dev");
+    if (iosSwitch) iosSwitch.setAttribute("aria-checked", isCreator ? "true" : "false");
+    modeLabels.forEach(function(l){
+      l.classList.toggle("active", l.getAttribute("data-side") === mode);
     });
-    if (modeSwitch) modeSwitch.setAttribute("data-active", mode);
-    if (devTrack) devTrack.classList.toggle("mode-hidden", mode !== "dev");
-    if (creatorTrack) creatorTrack.classList.toggle("mode-hidden", mode !== "creator");
+    if (devTrack) devTrack.classList.toggle("mode-hidden", isCreator);
+    if (creatorTrack) creatorTrack.classList.toggle("mode-hidden", !isCreator);
+    try { sessionStorage.setItem("mode", mode); } catch (e) {}
   }
 
-  modeButtons.forEach(function(b){
-    b.addEventListener("click", function(){ setMode(b.getAttribute("data-mode")); });
+  if (iosSwitch) {
+    iosSwitch.addEventListener("click", function(){
+      var next = iosSwitch.getAttribute("aria-checked") === "true" ? "dev" : "creator";
+      setMode(next);
+    });
+  }
+  modeLabels.forEach(function(l){
+    l.addEventListener("click", function(){ setMode(l.getAttribute("data-side")); });
   });
-  setMode("dev");
+  var savedMode = "dev";
+  try { savedMode = sessionStorage.getItem("mode") || "dev"; } catch (e) {}
+  setMode(savedMode);
 
   islandLinks.forEach(function(a){
     a.addEventListener("click", function(e){
@@ -210,6 +219,31 @@
   } else if (cursorPill) {
     cursorPill.remove();
   }
+
+  /* ---------- Folder project browser ---------- */
+  document.querySelectorAll(".folder-grid").forEach(function(grid){
+    var items = grid.querySelectorAll(".folder-item");
+    items.forEach(function(item){
+      item.addEventListener("click", function(){
+        var id = item.getAttribute("data-target");
+        var panel = document.getElementById(id);
+        if (!panel) return;
+        var alreadyOpen = panel.classList.contains("open");
+        items.forEach(function(other){
+          var otherPanel = document.getElementById(other.getAttribute("data-target"));
+          if (otherPanel) otherPanel.classList.remove("open");
+          other.setAttribute("aria-expanded", "false");
+        });
+        if (!alreadyOpen) {
+          panel.classList.add("open");
+          item.setAttribute("aria-expanded", "true");
+          if (!reduceMotion) {
+            setTimeout(function(){ panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 350);
+          }
+        }
+      });
+    });
+  });
 
   /* ---------- Current year ---------- */
   var yearEl = document.getElementById("year");

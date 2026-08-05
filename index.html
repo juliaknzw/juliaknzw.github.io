@@ -63,7 +63,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -123,25 +123,20 @@
 
     <p class="hero-role-line">currently working as <span id="heroRole">ios developer</span><span class="caret">|</span></p>
 
+    <div class="mode-switch-wrap">
+      <span class="mode-label active" data-side="dev">ios &amp; dev</span>
+      <button class="ios-switch" role="switch" aria-checked="false" aria-label="Switch the whole site between iOS developer and content creator view">
+        <span class="ios-switch-knob"></span>
+      </button>
+      <span class="mode-label" data-side="creator">content &amp; growth</span>
+    </div>
+
     <div class="hero-topbar">
       <span class="clock" id="localClock">00:00:00</span>
       <span class="status"><span class="dot"></span>open to work</span>
     </div>
 
     <div class="hero-scroll-cue"><span>scroll</span><span class="line"></span></div>
-  </section>
-
-  <!-- MODE SWITCH -->
-  <section id="lanes" class="lanes-section">
-    <div class="page">
-      <div class="eyebrow"><span class="bracket">[</span>what are you hiring for<span class="bracket">]</span></div>
-      <div class="mode-switch" data-active="dev" role="tablist" aria-label="Choose a track">
-        <button class="mode-btn active" data-mode="dev" role="tab" aria-selected="true">ios &amp; development</button>
-        <button class="mode-btn" data-mode="creator" role="tab" aria-selected="false">content &amp; growth</button>
-        <span class="mode-indicator" aria-hidden="true"></span>
-      </div>
-      <p class="lede mode-hint">switches the sections below. about, principles, education and contact always stay visible either way.</p>
-    </div>
   </section>
 
   <div class="ticker-wrap" aria-hidden="true">
@@ -158,17 +153,26 @@
       <div class="about-grid">
         <div class="about-body reveal">
           <div class="about-intro">
-            <img class="about-photo" src="assets/profile.jpg" alt="Julia Kasanzewa" loading="lazy">
+            <img class="about-photo" src="assets/profile-sticker.png" alt="Julia Kasanzewa" loading="lazy">
             <p class="about-lead">i write pull requests that ship, and hooks that stop the scroll.</p>
           </div>
           <p>I'm a software engineer and founder with <strong>5+ years of experience in backend and iOS development</strong>, specialising in scalable system architecture, API design, and full-stack product delivery. A B.Sc. in Computer Science and an M.Eng. in Print &amp; Media Technology (both BHT Berlin) gave me a genuinely cross-disciplinary foundation: engineering rigor on one side, user-centred media and brand thinking on the other.</p>
-          <p>Alongside engineering roles, I independently founded and operate a direct-to-consumer wellness brand, building the e-commerce platform, the funnels, and a multi-platform content strategy on <strong>Instagram, YouTube and TikTok</strong> from a single follower to a running business. I know what it's like to ship code in the morning and content that has to perform by the afternoon. Use the switch above to jump to the track you're hiring for, or just keep scrolling.</p>
+          <p>Alongside engineering roles, I independently founded and operate a direct-to-consumer wellness brand, building the e-commerce platform, the funnels, and a multi-platform content strategy on <strong>Instagram, YouTube and TikTok</strong> from a single follower to a running business. I know what it's like to ship code in the morning and content that has to perform by the afternoon.</p>
+          <div class="process-strip">
+            <span class="step">target audience &amp; positioning</span><span class="arrow-sep">→</span>
+            <span class="step">marketing &amp; leads</span><span class="arrow-sep">→</span>
+            <span class="step">social &amp; growth</span><span class="arrow-sep">→</span>
+            <span class="step">the websites &amp; apps that hold it together</span>
+          </div>
+          <p>I understand that whole chain end to end, and I build every piece of it user-first, whether the "user" is scrolling a feed or opening an app. Use the switch above to jump to the track you're hiring for, or keep scrolling, both live on the same page.</p>
         </div>
         <div class="stat-list reveal">
           <div class="stat"><span class="n">5+</span><span class="l">years shipping production software</span></div>
           <div class="stat"><span class="n">80%+</span><span class="l">real-world accuracy, on-device iOS ML model</span></div>
           <div class="stat"><span class="n">3</span><span class="l">platforms grown solo: instagram, youtube, tiktok</span></div>
           <div class="stat"><span class="n">1</span><span class="l">business built end-to-end, zero co-founders</span></div>
+          <div class="stat"><span class="n">11</span><span class="l">page brand &amp; content strategy case study, real client brief</span></div>
+          <div class="stat"><span class="n">19</span><span class="l">artwork classes recognised on-device, offline</span></div>
         </div>
       </div>
     </div>
@@ -216,41 +220,47 @@
       </div>
 
       <div class="track-sub">
-        <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>dev projects<span class="bracket">]</span></div>
-        <div class="project-grid">
+        <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>dev projects, click a folder<span class="bracket">]</span></div>
+        <div class="folder-grid">
 
-          <article class="card in" data-cursor="in development">
-            <span class="tag tag-dev card-tag">iOS · in development</span>
-            <h3>Subconscious Studio</h3>
-            <div class="meta-line">personal app · swiftui, supabase</div>
+          <button class="folder-item" data-target="proj-subconscious" aria-expanded="false">
+            <span class="folder-icon" data-tint="dev">📱</span>
+            <span class="folder-name">Subconscious Studio</span>
+          </button>
+          <button class="folder-item" data-target="proj-artwork" aria-expanded="false">
+            <span class="folder-icon" data-tint="dev">🖼️</span>
+            <span class="folder-name">AI Artwork Guide</span>
+          </button>
+          <button class="folder-item" data-target="proj-shop" aria-expanded="false">
+            <span class="folder-icon" data-tint="dev">🛒</span>
+            <span class="folder-name">Online Shop Backend</span>
+          </button>
+
+          <div class="folder-detail" id="proj-subconscious"><div class="folder-detail-inner"><div class="folder-detail-panel">
+            <div class="meta-line">personal app · in development · swiftui, supabase</div>
             <p>Native SwiftUI companion app for my own wellness brand, with Sign in with Apple auth, a Supabase backend, and an in-progress audio player for the hypnosis library.</p>
             <div class="card-stack">
               <span class="chip">swiftui</span><span class="chip">supabase</span><span class="chip">sign in with apple</span><span class="chip">mvvm</span>
             </div>
             <a class="card-link" href="https://github.com/juliaknzw/subconscious-studio" target="_blank" rel="noopener" data-cursor="view repo">view repo <span class="arrow">→</span></a>
-          </article>
+          </div></div></div>
 
-          <article class="card in" data-cursor="case view">
-            <span class="tag tag-dev card-tag">iOS</span>
-            <h3>AI Artwork Guide</h3>
+          <div class="folder-detail" id="proj-artwork"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <div class="meta-line">bachelor thesis · swift, coreml, vision, mvvm</div>
-            <p>Native iOS app that identifies artworks on-device and shows curated info in real time, built for museum visitors, no internet required.</p>
+            <p>Native iOS app that identifies artworks on-device and shows curated info in real time, built for museum visitors, no internet required. 80%+ real-world accuracy across 19 classes.</p>
             <div class="card-stack">
               <span class="chip">swift</span><span class="chip">swiftui</span><span class="chip">coreml</span><span class="chip">vision</span><span class="chip">mvvm</span>
             </div>
-            <a class="card-link" href="https://github.com/juliaknzw/ai-artwork-guide-ios" target="_blank" rel="noopener" data-cursor="view repo">80%+ real-world accuracy, view repo <span class="arrow">→</span></a>
-          </article>
+            <a class="card-link" href="https://github.com/juliaknzw/ai-artwork-guide-ios" target="_blank" rel="noopener" data-cursor="view repo">view repo <span class="arrow">→</span></a>
+          </div></div></div>
 
-          <article class="card in" data-cursor="see more">
-            <span class="tag tag-dev card-tag">backend</span>
-            <h3>Online Shop Backend</h3>
+          <div class="folder-detail" id="proj-shop"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <div class="meta-line">university project · node, express, mysql</div>
-            <p>CRUD e-commerce backend powering an EJS storefront, led as both backend developer and Scrum Master for a 5-person team.</p>
+            <p>CRUD e-commerce backend powering an EJS storefront, led as both backend developer and Scrum Master for a 5-person team, sprints run on GitLab.</p>
             <div class="card-stack">
               <span class="chip">node.js</span><span class="chip">express</span><span class="chip">mysql</span><span class="chip">sequelize</span><span class="chip">mvc</span>
             </div>
-            <span class="card-link">gitlab-run sprints, 5-person team</span>
-          </article>
+          </div></div></div>
 
         </div>
       </div>
@@ -328,50 +338,71 @@
       </div>
 
       <div class="track-sub">
-        <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>creator projects<span class="bracket">]</span></div>
-        <div class="project-grid">
+        <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>creator projects, click a folder<span class="bracket">]</span></div>
+        <div class="folder-grid">
 
-          <article class="card in" data-cursor="read case">
-            <span class="tag tag-creator card-tag">growth</span>
-            <h3>Instagram Growth Case Study</h3>
+          <button class="folder-item" data-target="proj-halenow" aria-expanded="false">
+            <span class="folder-icon" data-tint="creator">🌿</span>
+            <span class="folder-name">HALE.NOW × RCVR.NOW</span>
+          </button>
+          <button class="folder-item" data-target="proj-ig-growth" aria-expanded="false">
+            <span class="folder-icon" data-tint="creator">📈</span>
+            <span class="folder-name">Instagram Growth Case Study</span>
+          </button>
+          <button class="folder-item" data-target="proj-casablanca" aria-expanded="false">
+            <span class="folder-icon" data-tint="creator">🎬</span>
+            <span class="folder-name">Casablanca gGmbH Video</span>
+          </button>
+          <button class="folder-item" data-target="proj-leadmagnet" aria-expanded="false">
+            <span class="folder-icon" data-tint="creator">🧲</span>
+            <span class="folder-name">Lead Magnet + Funnel</span>
+          </button>
+          <button class="folder-item" data-target="proj-wellbeing" aria-expanded="false">
+            <span class="folder-icon" data-tint="creator">🎙️</span>
+            <span class="folder-name">Well-Being AI</span>
+          </button>
+
+          <div class="folder-detail" id="proj-halenow"><div class="folder-detail-inner"><div class="folder-detail-panel">
+            <img src="assets/sneak-peek/halenow-visual.jpg" alt="Instagram carousel concept designed for HALE.NOW x Paper & Tea">
+            <div class="meta-line">job application case study · brand analysis → content plan → launch</div>
+            <p>An 11-page case study for HALE.NOW (a Berlin wellness studio featured in Vogue Germany, Gala and InStyle) and its sister brand RCVR.NOW: brand and target-audience analysis, a designed Instagram carousel concept for a HALE.NOW x Paper &amp; Tea event, and a full 7-day content calendar for RCVR.NOW's studio opening week, hook, caption, CTA and posting time mapped for every day.</p>
+            <div class="card-stack">
+              <span class="chip">positioning</span><span class="chip">content calendar</span><span class="chip">copywriting</span><span class="chip">launch strategy</span>
+            </div>
+          </div></div></div>
+
+          <div class="folder-detail" id="proj-ig-growth"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <div class="meta-line">master's thesis · lean startup on instagram</div>
-            <p>Full 3-month growth strategy for a self-built Instagram brand, applying Lean Startup methodology to a real audience, in real time.</p>
+            <p>Full 3-month growth strategy for a self-built Instagram brand, applying Lean Startup methodology to a real audience, in real time: competitor benchmarking, persona research, and KPI iteration.</p>
             <div class="card-stack">
               <span class="chip">metricool</span><span class="chip">hubspot</span><span class="chip">persona research</span><span class="chip">kpi tracking</span>
             </div>
-            <span class="card-link">competitor benchmarking to kpi iteration</span>
-          </article>
+          </div></div></div>
 
-          <article class="card in" data-cursor="watch story">
-            <span class="tag tag-creator card-tag">video</span>
-            <h3>Casablanca gGmbH Image Video</h3>
+          <div class="folder-detail" id="proj-casablanca"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <div class="meta-line">team lead &amp; videographer · 4-person team</div>
             <p>Led a 4-person team end-to-end (script, shoot, edit), delivering the client's final brand video from concept to cut.</p>
             <div class="card-stack">
               <span class="chip">scripting</span><span class="chip">videography</span><span class="chip">editing</span><span class="chip">team lead</span>
             </div>
-          </article>
+          </div></div></div>
 
-          <article class="card in" data-cursor="open project">
-            <span class="tag tag-creator card-tag">marketing</span>
-            <h3>Lead Magnet + Funnel</h3>
+          <div class="folder-detail" id="proj-leadmagnet"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <div class="meta-line">university project · wordpress</div>
             <p>Designed a lead magnet and implemented the full acquisition funnel on WordPress, mapping KPIs and a simple lifecycle flow.</p>
             <div class="card-stack">
               <span class="chip">wordpress</span><span class="chip">funnel design</span><span class="chip">lead gen</span>
             </div>
-          </article>
+          </div></div></div>
 
-          <article class="card in" data-cursor="watch concept">
-            <span class="tag tag-creator card-tag">ai concept</span>
-            <h3>Well-Being AI</h3>
-            <div class="meta-line">concept prototype · adobe xd, elevenlabs</div>
+          <div class="folder-detail" id="proj-wellbeing"><div class="folder-detail-inner"><div class="folder-detail-panel">
             <video class="card-video" src="assets/wellbeing-ai-concept.mp4" controls preload="none" poster="assets/sneak-peek/hypnosis-cover.jpg"></video>
+            <div class="meta-line">concept prototype · adobe xd, elevenlabs</div>
             <p>A wellbeing app concept with a voice-guided AI interface. Prototyped in Adobe XD and Illustrator, with the voice built in ElevenLabs using a clone of my own voice.</p>
             <div class="card-stack">
               <span class="chip">adobe xd</span><span class="chip">illustrator</span><span class="chip">elevenlabs</span><span class="chip">voice cloning</span>
             </div>
-          </article>
+          </div></div></div>
 
         </div>
 
