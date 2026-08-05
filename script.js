@@ -153,24 +153,6 @@
     setInterval(updateClock, 1000);
   }
 
-  /* ---------- Focus segment filter ---------- */
-  var segment = document.querySelector(".segment");
-  var filterables = document.querySelectorAll("[data-cat]");
-  if (segment) {
-    segment.addEventListener("click", function(e){
-      var btn = e.target.closest("button[data-filter]");
-      if (!btn) return;
-      segment.querySelectorAll("button").forEach(function(b){ b.classList.remove("active"); });
-      btn.classList.add("active");
-      var filter = btn.getAttribute("data-filter");
-      filterables.forEach(function(el){
-        var cats = (el.getAttribute("data-cat") || "").split(" ");
-        var show = filter === "all" || cats.indexOf(filter) !== -1;
-        el.hidden = !show;
-      });
-    });
-  }
-
   /* ---------- Custom cursor pill ---------- */
   var cursorPill = document.querySelector(".cursor-pill");
   if (cursorPill && canHover && !reduceMotion) {

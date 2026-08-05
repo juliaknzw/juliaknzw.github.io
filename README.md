@@ -6,8 +6,8 @@ Static site (no build step) — HTML/CSS/vanilla JS. Design system based on the 
 - `index.html` — all content/sections
 - `style.css` — design system + layout
 - `script.js` — nav, scroll reveals, hero typewriter, project/experience filter, back-to-top
-- `assets/resume.pdf` — English CV (download button)
-- `assets/resume-de.pdf` — German CV (footer link)
+- `assets/resume.pdf` — short CV, 2 pages (quick download button)
+- `assets/resume-full.pdf` — detailed CV, 5 pages (footer link; both CVs are English)
 - `assets/og.png` — social share image
 - `robots.txt`, `sitemap.xml`, `.nojekyll` — SEO / GitHub Pages hygiene
 
