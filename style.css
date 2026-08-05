@@ -615,3 +615,31 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 .ugc-offer{margin-top:2em;}
 .ugc-offer .of-title{font-size:.8rem;font-weight:700;text-transform:lowercase;color:var(--greige);margin-bottom:1em;}
 .ugc-offer-chips{display:flex;flex-wrap:wrap;gap:.6em;}
+
+/* -------------------------------- BUY ME A COFFEE -------------------------------- */
+.coffee-card{
+  display:flex;align-items:center;gap:1.4em;padding:1.8em 2em;
+  background:var(--bronze-tint);border-radius:var(--radius-card);
+  transform:rotate(-.6deg);
+  transition:transform .35s var(--ease-out),background .3s;
+}
+.coffee-card:hover{transform:rotate(0deg) translateY(-2px);background:var(--oat);}
+.coffee-icon{
+  flex:none;width:3.6em;height:3.6em;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;padding:.7em;
+  background:var(--white);color:var(--bronze-deep);
+  box-shadow:0 6px 14px rgba(122,92,51,.18);
+}
+.coffee-text{display:flex;flex-direction:column;gap:.35em;flex:1;min-width:0;}
+.coffee-title{font-weight:700;font-size:1.05rem;color:var(--bronze-deep);text-transform:lowercase;}
+.coffee-sub{font-size:.85rem;color:#5c4526;max-width:52ch;}
+.coffee-go{
+  flex:none;font-size:.8rem;font-weight:700;color:var(--bronze-deep);text-transform:lowercase;
+  display:inline-flex;align-items:center;gap:.4em;white-space:nowrap;
+}
+.coffee-go .arrow{transition:transform .25s var(--ease-out);}
+.coffee-card:hover .coffee-go .arrow{transform:translateX(4px);}
+@media (max-width:640px){
+  .coffee-card{flex-wrap:wrap;transform:none;}
+  .coffee-go{margin-left:calc(3.6em + 1.4em);}
+}
