@@ -572,8 +572,8 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 .channel-banner{width:100%;border-radius:calc(var(--radius-card) * .6);object-fit:cover;aspect-ratio:16/6;}
 
 /* -------------------------------- WORK WITH ME (freelance packages) -------------------------------- */
-.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4em;}
-@media (max-width:860px){.package-grid{grid-template-columns:1fr;}}
+.package-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4em;}
+@media (max-width:720px){.package-grid{grid-template-columns:1fr;}}
 .package-card{
   background:var(--porcelain);border:1px solid var(--taupe);border-radius:var(--radius-card);
   padding:1.8em 1.7em;display:flex;flex-direction:column;gap:.7em;
