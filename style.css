@@ -499,26 +499,21 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 :root[data-theme="dev"] .thought-grid.dev-only,
 :root:not([data-theme]) .thought-grid.dev-only{display:grid;}
 
-/* -------------------------------- SOCIAL PROFILES -------------------------------- */
-.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4em;}
+/* -------------------------------- SOCIAL PROFILES (no icons, typographic) -------------------------------- */
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--taupe);border:1px solid var(--taupe);border-radius:var(--radius-card);overflow:hidden;}
 @media (max-width:640px){.social-grid{grid-template-columns:1fr;}}
 .social-card{
-  display:flex;align-items:center;gap:1.1em;padding:1.5em 1.7em;
-  background:var(--porcelain);border:1px solid var(--taupe);border-radius:var(--radius-card);
-  transition:transform .3s var(--ease-out),background .3s;
+  display:flex;flex-direction:column;gap:.4em;padding:1.6em 1.8em;
+  background:var(--porcelain);
+  transition:background .3s,transform .3s var(--ease-out);
 }
-.social-card:hover{transform:translateY(-3px);background:var(--linen);}
-.social-card .s-icon{
-  flex:none;width:3.2em;height:3.2em;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;color:var(--white);
-}
-.social-card.instagram .s-icon{background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);}
-.social-card.youtube .s-icon{background:#FF0000;}
-.social-card.tiktok .s-icon{background:linear-gradient(135deg,#25F4EE,#000,#FE2C55);}
-.social-card.linkedin .s-icon{background:#0A66C2;font-weight:700;font-size:1rem;}
-.social-card .s-body{display:flex;flex-direction:column;gap:.15em;}
-.social-card .s-handle{font-weight:700;font-size:1rem;color:var(--espresso);}
+.social-card:hover{background:var(--linen);transform:translateY(-2px);}
+.social-card .s-platform{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--rose-deep);}
+.social-card .s-handle{font-weight:700;font-size:1.15rem;color:var(--espresso);letter-spacing:-.01em;}
 .social-card .s-desc{font-size:.82rem;color:var(--greige);}
+.social-card .s-go{margin-top:.3em;font-size:.78rem;font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:.4em;}
+.social-card .s-go .arrow{transition:transform .25s var(--ease-out);}
+.social-card:hover .s-go .arrow{transform:translateX(4px);}
 
 /* -------------------------------- DECORATIVE STICKERS (creator theme) -------------------------------- */
 .sticker{position:absolute;pointer-events:none;opacity:0;transition:opacity .6s var(--ease-out);z-index:1;}
@@ -534,3 +529,54 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 .sticker-sparkle{top:60%;left:2%;width:2.1em;--r:-10deg;}
 .sticker-heart{bottom:8%;right:10%;width:2.2em;--r:6deg;}
 @media (max-width:720px){.sticker{display:none;}}
+
+/* -------------------------------- STEP FLOW (how i work across the funnel) -------------------------------- */
+.step-flow{display:flex;align-items:flex-start;gap:0;margin:2em 0 2.4em;flex-wrap:wrap;}
+.step-flow .step-node{display:flex;flex-direction:column;align-items:center;text-align:center;width:11em;gap:.7em;}
+.step-flow .step-num{
+  width:2.6em;height:2.6em;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--rose-tint);color:var(--rose-deep);font-weight:700;font-size:1rem;flex:none;
+  border:2px solid var(--rose);
+}
+.step-flow .step-label{font-size:.85rem;font-weight:600;color:var(--ink-soft);line-height:1.3;}
+.step-flow .step-connector{flex:1;min-width:1.5em;height:2px;background:var(--taupe);margin-top:1.3em;position:relative;top:0;}
+@media (max-width:760px){
+  .step-flow{flex-direction:column;align-items:flex-start;gap:1em;}
+  .step-flow .step-node{flex-direction:row;width:auto;text-align:left;}
+  .step-flow .step-connector{width:2px;height:1.4em;min-width:0;margin:0 0 0 1.3em;}
+}
+
+/* -------------------------------- PROJECT GROUP LABEL -------------------------------- */
+.project-group{margin-bottom:2.4em;}
+.project-group:last-child{margin-bottom:0;}
+.project-group .pg-label{font-size:.8rem;font-weight:700;text-transform:lowercase;color:var(--greige);margin-bottom:1.2em;letter-spacing:.02em;}
+
+/* -------------------------------- VIDEO EMBED -------------------------------- */
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:calc(var(--radius-card) * .6);overflow:hidden;background:var(--espresso);}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+
+/* -------------------------------- FOLDER PANEL GALLERY -------------------------------- */
+.panel-gallery{display:grid;grid-template-columns:1fr 1fr;gap:.6em;}
+.panel-gallery img{width:100%;border-radius:calc(var(--radius-card) * .5);object-fit:cover;}
+.panel-gallery .full{grid-column:1/-1;}
+@media (max-width:520px){.panel-gallery{grid-template-columns:1fr;}}
+
+/* -------------------------------- CHANNEL CARD -------------------------------- */
+.channel-banner{width:100%;border-radius:calc(var(--radius-card) * .6);object-fit:cover;aspect-ratio:16/6;}
+
+/* -------------------------------- WORK WITH ME (freelance packages) -------------------------------- */
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4em;}
+@media (max-width:860px){.package-grid{grid-template-columns:1fr;}}
+.package-card{
+  background:var(--porcelain);border:1px solid var(--taupe);border-radius:var(--radius-card);
+  padding:1.8em 1.7em;display:flex;flex-direction:column;gap:.7em;
+}
+.package-card .pkg-title{font-weight:700;font-size:1.05rem;color:var(--espresso);}
+.package-card p{font-size:.88rem;color:var(--ink-soft);}
+.package-card .pkg-tags{display:flex;flex-wrap:wrap;gap:.5em;margin-top:auto;padding-top:.4em;}
+.work-cta{
+  margin-top:1.8em;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2em;
+  background:var(--bronze-tint);border-radius:var(--radius-card);padding:1.6em 1.9em;
+}
+.work-cta p{font-size:.92rem;color:#5c4526;max-width:48ch;}
+.work-cta strong{color:var(--bronze-deep);}
