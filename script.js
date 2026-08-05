@@ -231,12 +231,16 @@
         var alreadyOpen = panel.classList.contains("open");
         items.forEach(function(other){
           var otherPanel = document.getElementById(other.getAttribute("data-target"));
-          if (otherPanel) otherPanel.classList.remove("open");
+          if (otherPanel) {
+            otherPanel.classList.remove("open");
+            otherPanel.querySelectorAll("video").forEach(function(v){ v.pause(); });
+          }
           other.setAttribute("aria-expanded", "false");
         });
         if (!alreadyOpen) {
           panel.classList.add("open");
           item.setAttribute("aria-expanded", "true");
+          panel.querySelectorAll("video").forEach(function(v){ v.play().catch(function(){}); });
           if (!reduceMotion) {
             setTimeout(function(){ panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 350);
           }
@@ -244,6 +248,91 @@
       });
     });
   });
+
+  /* ---------- Slideshows ---------- */
+  document.querySelectorAll(".slideshow").forEach(function(sw){
+    var track = sw.querySelector(".slideshow-track");
+    var slides = sw.querySelectorAll(".slideshow-track img");
+    if (slides.length < 2) return;
+    var i = 0;
+    var dotsWrap = document.createElement("div");
+    dotsWrap.className = "slide-dots";
+    var dots = [];
+    slides.forEach(function(_, idx){
+      var d = document.createElement("button");
+      d.setAttribute("aria-label", "Go to slide " + (idx + 1));
+      if (idx === 0) d.classList.add("active");
+      d.addEventListener("click", function(){ go(idx); });
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    });
+    var count = document.createElement("span");
+    count.className = "slide-count";
+    var prev = document.createElement("button");
+    prev.className = "slide-nav prev"; prev.setAttribute("aria-label", "Previous slide"); prev.textContent = "‹";
+    var next = document.createElement("button");
+    next.className = "slide-nav next"; next.setAttribute("aria-label", "Next slide"); next.textContent = "›";
+    sw.appendChild(prev); sw.appendChild(next); sw.appendChild(dotsWrap); sw.appendChild(count);
+
+    function go(n){
+      i = (n + slides.length) % slides.length;
+      track.style.transform = "translateX(-" + (i * 100) + "%)";
+      dots.forEach(function(d, idx){ d.classList.toggle("active", idx === i); });
+      count.textContent = (i + 1) + " / " + slides.length;
+    }
+    prev.addEventListener("click", function(e){ e.stopPropagation(); go(i - 1); });
+    next.addEventListener("click", function(e){ e.stopPropagation(); go(i + 1); });
+    go(0);
+  });
+
+  /* ---------- Video: muted autoplay on view, sound on hover ---------- */
+  document.querySelectorAll(".iphone-screen video, .ugc-video").forEach(function(v){
+    v.muted = true;
+    v.loop = true;
+    v.setAttribute("playsinline", "");
+  });
+  if ("IntersectionObserver" in window) {
+    var videoViewObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var v = entry.target;
+        if (entry.isIntersecting) v.play().catch(function(){});
+        else v.pause();
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll(".iphone-screen video, .ugc-video").forEach(function(v){
+      videoViewObserver.observe(v);
+    });
+  }
+  document.querySelectorAll("video").forEach(function(v){
+    v.addEventListener("mouseenter", function(){ v.muted = false; });
+    v.addEventListener("mouseleave", function(){ v.muted = true; });
+  });
+
+  /* ---------- YouTube embeds: muted autoplay, sound on hover ---------- */
+  var ytPlayers = {};
+  var ytIframes = document.querySelectorAll(".video-embed iframe[data-yt]");
+  if (ytIframes.length) {
+    var ytTag = document.createElement("script");
+    ytTag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(ytTag);
+    window.onYouTubeIframeAPIReady = function(){
+      ytIframes.forEach(function(frame){
+        var id = frame.id;
+        ytPlayers[id] = new window.YT.Player(id, {
+          events: {
+            onReady: function(e){
+              e.target.mute();
+              var wrap = frame.closest(".video-embed");
+              if (wrap) {
+                wrap.addEventListener("mouseenter", function(){ e.target.unMute(); });
+                wrap.addEventListener("mouseleave", function(){ e.target.mute(); });
+              }
+            }
+          }
+        });
+      });
+    };
+  }
 
   /* ---------- Current year ---------- */
   var yearEl = document.getElementById("year");
