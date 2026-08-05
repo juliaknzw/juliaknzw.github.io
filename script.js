@@ -61,11 +61,48 @@
   if (islandOverlay) {
     islandOverlay.addEventListener("click", function(){ setIslandOpen(false); });
   }
-  islandLinks.forEach(function(a){
-    a.addEventListener("click", function(){ setIslandOpen(false); });
-  });
   document.addEventListener("keydown", function(e){
     if (e.key === "Escape") setIslandOpen(false);
+  });
+
+  /* ---------- Dev / Creator mode switch ---------- */
+  var modeSwitch = document.querySelector(".mode-switch");
+  var modeButtons = document.querySelectorAll(".mode-btn");
+  var devTrack = document.getElementById("dev-track");
+  var creatorTrack = document.getElementById("creator-track");
+  var trackForAnchor = { "dev-track": "dev", "creator-track": "creator", "founder": "creator" };
+
+  function setMode(mode){
+    modeButtons.forEach(function(b){
+      var active = b.getAttribute("data-mode") === mode;
+      b.classList.toggle("active", active);
+      b.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    if (modeSwitch) modeSwitch.setAttribute("data-active", mode);
+    if (devTrack) devTrack.classList.toggle("mode-hidden", mode !== "dev");
+    if (creatorTrack) creatorTrack.classList.toggle("mode-hidden", mode !== "creator");
+  }
+
+  modeButtons.forEach(function(b){
+    b.addEventListener("click", function(){ setMode(b.getAttribute("data-mode")); });
+  });
+  setMode("dev");
+
+  islandLinks.forEach(function(a){
+    a.addEventListener("click", function(e){
+      setIslandOpen(false);
+      var id = (a.getAttribute("href") || "").replace("#", "");
+      var mode = trackForAnchor[id];
+      if (mode) {
+        e.preventDefault();
+        setMode(mode);
+        var delay = reduceMotion ? 0 : 620;
+        setTimeout(function(){
+          var target = document.getElementById(id);
+          if (target) target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        }, delay);
+      }
+    });
   });
 
   /* ---------- Active nav link on scroll ---------- */
