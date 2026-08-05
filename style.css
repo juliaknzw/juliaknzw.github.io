@@ -616,14 +616,14 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 .ugc-offer .of-title{font-size:.8rem;font-weight:700;text-transform:lowercase;color:var(--greige);margin-bottom:1em;}
 .ugc-offer-chips{display:flex;flex-wrap:wrap;gap:.6em;}
 
-/* -------------------------------- BUY ME A COFFEE -------------------------------- */
+/* -------------------------------- CONNECT / BUY ME A COFFEE -------------------------------- */
 .coffee-card{
   display:flex;align-items:center;gap:1.4em;padding:1.8em 2em;
   background:var(--bronze-tint);border-radius:var(--radius-card);
   transform:rotate(-.6deg);
-  transition:transform .35s var(--ease-out),background .3s;
+  transition:transform .35s var(--ease-out);
 }
-.coffee-card:hover{transform:rotate(0deg) translateY(-2px);background:var(--oat);}
+.coffee-card:hover{transform:rotate(0deg);}
 .coffee-icon{
   flex:none;width:3.6em;height:3.6em;border-radius:50%;
   display:flex;align-items:center;justify-content:center;padding:.7em;
@@ -633,13 +633,15 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 .coffee-text{display:flex;flex-direction:column;gap:.35em;flex:1;min-width:0;}
 .coffee-title{font-weight:700;font-size:1.05rem;color:var(--bronze-deep);text-transform:lowercase;}
 .coffee-sub{font-size:.85rem;color:#5c4526;max-width:52ch;}
-.coffee-go{
-  flex:none;font-size:.8rem;font-weight:700;color:var(--bronze-deep);text-transform:lowercase;
-  display:inline-flex;align-items:center;gap:.4em;white-space:nowrap;
+.coffee-actions{flex:none;display:flex;flex-direction:column;gap:.5em;}
+.coffee-link{
+  font-size:.78rem;font-weight:700;color:var(--bronze-deep);text-transform:lowercase;
+  white-space:nowrap;padding:.55em 1.1em;border-radius:2em;background:var(--white);
+  border:1px solid var(--taupe);transition:background .25s,transform .25s var(--ease-out);
+  text-align:center;
 }
-.coffee-go .arrow{transition:transform .25s var(--ease-out);}
-.coffee-card:hover .coffee-go .arrow{transform:translateX(4px);}
+.coffee-link:hover{background:var(--bronze-deep);color:var(--bronze-tint);transform:translateY(-2px);}
 @media (max-width:640px){
   .coffee-card{flex-wrap:wrap;transform:none;}
-  .coffee-go{margin-left:calc(3.6em + 1.4em);}
+  .coffee-actions{flex-direction:row;margin-left:calc(3.6em + 1.4em);}
 }
