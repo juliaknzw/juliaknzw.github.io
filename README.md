@@ -5,10 +5,11 @@ Static site (no build step) — HTML/CSS/vanilla JS. Design system based on the 
 ## Structure
 - `index.html` — all content/sections
 - `style.css` — design system + layout
-- `script.js` — nav, scroll reveals, hero typewriter, project/experience filter, back-to-top
-- `assets/resume.pdf` — short CV, 2 pages (quick download button)
-- `assets/resume-full.pdf` — detailed CV, 5 pages (footer link; both CVs are English)
+- `script.js` — island nav, dev/creator mode switch, scroll reveals, hero spotlight, custom cursor
+- `assets/resume-ios.pdf` — résumé tailored for iOS/backend developer applications
+- `assets/resume-creator.pdf` — résumé tailored for content creator/social media manager applications
 - `assets/og.png` — social share image
+- `assets/profile.jpg`, `assets/sneak-peek/`, `assets/media-kit.pdf`, `assets/wellbeing-ai-concept.mp4` — real media assets
 - `robots.txt`, `sitemap.xml`, `.nojekyll` — SEO / GitHub Pages hygiene
 
 ## Deploy to GitHub Pages
