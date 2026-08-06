@@ -475,6 +475,12 @@ body.folder-hover .cursor-pill{display:none;}
 .process-strip .arrow-sep{color:var(--rose-deep);font-size:.85rem;}
 
 /* -------------------------------- FOLDER PROJECT BROWSER -------------------------------- */
+.folder-workspace{display:flex;align-items:flex-start;gap:1.8em;}
+.folder-workspace .folder-grid{flex:1 1 auto;min-width:0;}
+@media (max-width:780px){
+  .folder-workspace{flex-wrap:wrap;}
+  .folder-workspace .trash-can{margin-left:auto;}
+}
 .folder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5em,1fr));gap:2em 1.2em;}
 .folder-item{
   display:flex;flex-direction:column;align-items:center;gap:.7em;cursor:pointer;
@@ -518,17 +524,17 @@ body.folder-hover .cursor-pill{display:none;}
 
 /* -------------------------------- TRASH CAN -------------------------------- */
 .trash-can{
-  display:flex;flex-direction:column;align-items:center;gap:.7em;color:var(--greige);
-  padding:.4em;transform:none !important;transition:color .2s,transform .25s var(--ease-out);
+  flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.6em;color:var(--greige);
+  padding:.4em .6em 0;transition:filter .2s;
 }
-.trash-icon{width:3.6em;height:4.4em;transition:transform .25s var(--ease-out);}
-.trash-can .trash-lid{transform-origin:20% 12px;transition:transform .25s var(--ease-out);}
-.trash-name{font-size:.82rem;font-weight:600;text-align:center;font-family:var(--font-display);}
-.trash-can.drag-over{color:var(--rose-deep,#B76E79);}
-.trash-can.drag-over .trash-icon{transform:translateY(-.2em) scale(1.08);}
-.trash-can.drag-over .trash-lid{transform:rotate(-18deg);}
-body.dragging-folder .trash-can{color:var(--sage-deep,#5F6F54);}
-body.dragging-folder .trash-can.drag-over{color:var(--rose-deep,#B76E79);}
+.trash-icon{width:3.4em;height:4.25em;display:block;transition:transform .25s var(--ease-out);}
+.trash-can .trash-lid{transform-origin:24px 17px;transition:transform .3s var(--ease-out);}
+.trash-name{font-size:.78rem;font-weight:600;text-align:center;font-family:var(--font-display);text-transform:lowercase;}
+.trash-can.drag-over{filter:drop-shadow(0 4px 10px rgba(183,110,121,.35));}
+.trash-can.drag-over .trash-icon{transform:translateY(-.15em) scale(1.06);}
+.trash-can.drag-over .trash-lid{transform:rotate(-34deg) translate(-3px,-2px);}
+body.dragging-folder .trash-name{color:var(--sage-deep,#5F6F54);}
+body.dragging-folder .trash-can.drag-over .trash-name{color:var(--rose-deep,#B76E79);}
 
 /* -------------------------------- TRASH FEEDBACK MODAL -------------------------------- */
 .trash-modal-backdrop{
