@@ -405,8 +405,8 @@ footer.site-footer{
 }
 .contact-top{display:flex;flex-direction:column;align-items:flex-start;gap:1.2em;}
 .contact-link{
-  font-size:clamp(1.9rem,5vw,3.6rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;
-  color:var(--espresso);transition:color .3s;
+  font-size:clamp(1.6rem,6.5vw,3.6rem);font-weight:400;letter-spacing:-.02em;line-height:1.15;
+  color:var(--espresso);transition:color .3s;overflow-wrap:anywhere;word-break:break-word;
 }
 .contact-link:hover{color:var(--rose-deep);}
 .contact-sub{max-width:52ch;color:var(--ink-soft);font-size:1rem;}
@@ -527,12 +527,10 @@ body.folder-hover .cursor-pill{display:none;}
   flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.6em;color:var(--greige);
   padding:.4em .6em 0;transition:filter .2s;
 }
-.trash-icon{width:3.4em;height:4.4em;display:block;transition:transform .25s var(--ease-out);}
-.trash-can .trash-lid{transform-origin:24px 18px;transition:transform .3s var(--ease-out);}
+.trash-icon{width:3.6em;height:4.2em;display:block;transition:transform .25s var(--ease-out);}
 .trash-name{font-size:.78rem;font-weight:600;text-align:center;font-family:var(--font-display);text-transform:lowercase;}
 .trash-can.drag-over{filter:drop-shadow(0 4px 10px rgba(183,110,121,.35));}
-.trash-can.drag-over .trash-icon{transform:translateY(-.15em) scale(1.06);}
-.trash-can.drag-over .trash-lid{transform:rotate(-34deg) translate(-3px,-2px);}
+.trash-can.drag-over .trash-icon{transform:translateY(-.15em) scale(1.1) rotate(-3deg);}
 body.dragging-folder .trash-name{color:var(--sage-deep,#5F6F54);}
 body.dragging-folder .trash-can.drag-over .trash-name{color:var(--rose-deep,#B76E79);}
 
@@ -670,6 +668,7 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 
 /* -------------------------------- IPHONE MOCKUP (instagram showcase) -------------------------------- */
 .iphone-grid{display:flex;gap:2.4em;flex-wrap:wrap;justify-content:flex-start;}
+@media (max-width:640px){.iphone-grid{justify-content:center;}}
 .iphone-item{display:flex;flex-direction:column;align-items:center;gap:1em;width:13em;}
 .iphone-mockup{
   position:relative;width:100%;aspect-ratio:9/19.5;border-radius:2em;padding:.45em;
@@ -690,6 +689,7 @@ ul.creator-only.principles-list,ul.dev-only.principles-list{display:none;}
 
 /* -------------------------------- UGC SECTION -------------------------------- */
 .ugc-grid{display:flex;gap:2em;flex-wrap:wrap;}
+@media (max-width:640px){.ugc-grid{justify-content:center;}}
 .ugc-item{display:flex;flex-direction:column;align-items:center;gap:.8em;width:13em;}
 .ugc-item .ugc-label{font-size:.85rem;font-weight:700;color:var(--espresso);}
 .ugc-item .ugc-sub{font-size:.78rem;color:var(--greige);}
