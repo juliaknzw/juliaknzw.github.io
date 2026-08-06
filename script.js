@@ -220,6 +220,30 @@
     cursorPill.remove();
   }
 
+  /* ---------- Retro cursor on folder hover ---------- */
+  var cursorRetro = document.querySelector(".cursor-retro");
+  if (cursorRetro && canHover && !reduceMotion) {
+    document.addEventListener("mousemove", function(e){
+      cursorRetro.style.transform = "translate(" + (e.clientX - 4) + "px," + (e.clientY - 4) + "px) scale(1)";
+    });
+    document.addEventListener("pointerover", function(e){
+      var target = e.target.closest(".folder-item");
+      if (target) {
+        cursorRetro.classList.add("show");
+        document.body.classList.add("folder-hover");
+      }
+    });
+    document.addEventListener("pointerout", function(e){
+      var target = e.target.closest(".folder-item");
+      if (target) {
+        cursorRetro.classList.remove("show");
+        document.body.classList.remove("folder-hover");
+      }
+    });
+  } else if (cursorRetro) {
+    cursorRetro.remove();
+  }
+
   /* ---------- Folder project browser ---------- */
   document.querySelectorAll(".folder-grid").forEach(function(grid){
     var items = grid.querySelectorAll(".folder-item");
@@ -248,6 +272,84 @@
       });
     });
   });
+
+  /* ---------- Trash can drag-and-drop feedback ---------- */
+  var trashCan = document.getElementById("trashCan");
+  var trashModal = document.getElementById("trashModal");
+  var trashForm = document.getElementById("trashForm");
+  var trashModalClose = document.getElementById("trashModalClose");
+  var draggedFolderName = "";
+
+  var openTrashModal = function(){
+    if (!trashModal) return;
+    trashModal.classList.add("show");
+    document.body.style.overflow = "hidden";
+    var emailInput = document.getElementById("trashEmail");
+    if (emailInput) setTimeout(function(){ emailInput.focus(); }, 300);
+  };
+  var closeTrashModal = function(){
+    if (!trashModal) return;
+    trashModal.classList.remove("show");
+    document.body.style.overflow = "";
+  };
+
+  document.querySelectorAll(".folder-item").forEach(function(item){
+    item.addEventListener("dragstart", function(e){
+      var nameEl = item.querySelector(".folder-name");
+      draggedFolderName = nameEl ? nameEl.textContent : "";
+      item.classList.add("dragging");
+      document.body.classList.add("dragging-folder");
+      if (e.dataTransfer) {
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", draggedFolderName);
+      }
+    });
+    item.addEventListener("dragend", function(){
+      item.classList.remove("dragging");
+      document.body.classList.remove("dragging-folder");
+      if (trashCan) trashCan.classList.remove("drag-over");
+    });
+  });
+
+  if (trashCan) {
+    trashCan.addEventListener("dragover", function(e){
+      e.preventDefault();
+      trashCan.classList.add("drag-over");
+    });
+    trashCan.addEventListener("dragleave", function(){
+      trashCan.classList.remove("drag-over");
+    });
+    trashCan.addEventListener("drop", function(e){
+      e.preventDefault();
+      trashCan.classList.remove("drag-over");
+      document.body.classList.remove("dragging-folder");
+      openTrashModal();
+    });
+  }
+
+  if (trashModalClose) trashModalClose.addEventListener("click", closeTrashModal);
+  if (trashModal) {
+    trashModal.addEventListener("click", function(e){
+      if (e.target === trashModal) closeTrashModal();
+    });
+  }
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && trashModal && trashModal.classList.contains("show")) closeTrashModal();
+  });
+
+  if (trashForm) {
+    trashForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = document.getElementById("trashEmail").value.trim();
+      var message = document.getElementById("trashMessage").value.trim();
+      var subject = "what to build instead" + (draggedFolderName ? " (trashed: " + draggedFolderName + ")" : "");
+      var body = message + "\n\nfrom: " + email;
+      var mailto = "mailto:kasanzewa.julia@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = mailto;
+      trashForm.classList.add("sent");
+      setTimeout(closeTrashModal, 900);
+    });
+  }
 
   /* ---------- Slideshows ---------- */
   document.querySelectorAll(".slideshow").forEach(function(sw){

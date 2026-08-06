@@ -80,6 +80,12 @@
 
 <div class="cursor-pill" aria-hidden="true"></div>
 
+<div class="cursor-retro" aria-hidden="true">
+  <svg viewBox="0 0 32 32" width="100%" height="100%">
+    <path d="M6 3 L6 27 L11.5 22 L15 29 L18.5 27.5 L15 20.5 L22 20.5 Z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+  </svg>
+</div>
+
 <!-- ISLAND NAV -->
 <nav class="island" data-open="false" aria-label="Primary">
   <div class="island-bar">
@@ -222,34 +228,34 @@
         <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>dev projects, click a folder<span class="bracket">]</span></div>
         <div class="folder-grid">
 
-          <button class="folder-item" data-target="proj-subconscious" aria-expanded="false">
+          <button class="folder-item" data-target="proj-subconscious" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Subconscious Studio</span>
           </button>
-          <button class="folder-item" data-target="proj-artwork" aria-expanded="false">
+          <button class="folder-item" data-target="proj-artwork" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">AI Artwork Guide</span>
           </button>
-          <button class="folder-item" data-target="proj-shop" aria-expanded="false">
+          <button class="folder-item" data-target="proj-shop" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Online Shop Backend</span>
           </button>
-          <button class="folder-item" data-target="proj-ecosort" aria-expanded="false">
+          <button class="folder-item" data-target="proj-ecosort" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">EcoSort</span>
           </button>
-          <button class="folder-item" data-target="proj-wellbeing" aria-expanded="false">
+          <button class="folder-item" data-target="proj-wellbeing" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Well-Being AI</span>
           </button>
-          <button class="folder-item" data-target="proj-radborse" aria-expanded="false">
+          <button class="folder-item" data-target="proj-radborse" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Rad-Börse</span>
           </button>
 
           <div class="folder-detail" id="proj-subconscious"><div class="folder-detail-inner"><div class="folder-detail-panel">
-            <div class="meta-line">personal app · in development · swiftui, supabase</div>
-            <p>Native SwiftUI companion app for my own wellness brand, with Sign in with Apple auth, a Supabase backend, and an in-progress audio player for the hypnosis library.</p>
+            <div class="meta-line">personal hypnosis app · august 2026 – present · swift, native ios</div>
+            <p>Building my own hypnosis app, Subconscious Studio, in native Swift for iOS: Sign in with Apple auth, a Supabase backend, and an in-progress audio player for the hypnosis library.</p>
             <div class="card-stack">
               <span class="chip">swiftui</span><span class="chip">supabase</span><span class="chip">sign in with apple</span><span class="chip">mvvm</span>
             </div>
@@ -447,12 +453,18 @@
         <p class="lede lede-sub">the two clips below are the same format applied to two different studios: a gym membership experience and a reformer pilates class at Zaya Studio. Native, phone-shot, on-brand, the kind of footage a studio can repost straight to their own feed.</p>
         <div class="ugc-grid reveal">
           <div class="ugc-item">
-            <video class="ugc-video" src="assets/ugc/ugc-gym.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="iphone-mockup hue-sage">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen"><video src="assets/ugc/ugc-gym.mp4" muted loop playsinline preload="metadata"></video></div>
+            </div>
             <span class="ugc-label">Gym membership experience</span>
             <span class="ugc-sub">locker room to workout floor, told as a first visit</span>
           </div>
           <div class="ugc-item">
-            <video class="ugc-video" src="assets/ugc/ugc-zaya-studio.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="iphone-mockup hue-gold">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen"><video src="assets/ugc/ugc-zaya-studio.mp4" muted loop playsinline preload="metadata"></video></div>
+            </div>
             <span class="ugc-label">Zaya Studio, reformer pilates</span>
             <span class="ugc-sub">studio atmosphere and class experience</span>
           </div>
@@ -474,11 +486,11 @@
         <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>content creation, click a folder<span class="bracket">]</span></div>
         <div class="folder-grid">
 
-          <button class="folder-item" data-target="proj-casablanca" aria-expanded="false">
+          <button class="folder-item" data-target="proj-casablanca" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Casablanca gGmbH Video</span>
           </button>
-          <button class="folder-item" data-target="proj-ytchannel" aria-expanded="false">
+          <button class="folder-item" data-target="proj-ytchannel" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">My YouTube Channel</span>
           </button>
@@ -506,15 +518,15 @@
         <div class="eyebrow eyebrow-sub"><span class="bracket">[</span>marketing &amp; growth, click a folder<span class="bracket">]</span></div>
         <div class="folder-grid">
 
-          <button class="folder-item" data-target="proj-halenow" aria-expanded="false">
+          <button class="folder-item" data-target="proj-halenow" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">HALE.NOW × RCVR.NOW</span>
           </button>
-          <button class="folder-item" data-target="proj-ig-growth" aria-expanded="false">
+          <button class="folder-item" data-target="proj-ig-growth" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Instagram Growth Case Study</span>
           </button>
-          <button class="folder-item" data-target="proj-leadmagnet" aria-expanded="false">
+          <button class="folder-item" data-target="proj-leadmagnet" aria-expanded="false" draggable="true">
             <span class="folder-icon"></span>
             <span class="folder-name">Lead Magnet + Funnel</span>
           </button>
@@ -654,26 +666,6 @@
         </div>
       </div>
 
-      <!-- CONNECT / BUY ME A COFFEE -->
-      <div class="track-sub">
-        <div class="coffee-card reveal">
-          <span class="coffee-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64" width="100%" height="100%">
-              <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M14 26h30v14a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V26z"/>
-              <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M44 30h4a6 6 0 0 1 0 12h-4"/>
-              <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M22 20c0-3 3-3 3-6s-3-3-3-6M31 20c0-3 3-3 3-6s-3-3-3-6"/>
-            </svg>
-          </span>
-          <span class="coffee-text">
-            <span class="coffee-title">let's connect, one way or another</span>
-            <span class="coffee-sub">connect with me on LinkedIn, that's always the right move. or if you're just a little bit interested and want to say so, buy me a coffee instead, haha. either works.</span>
-          </span>
-          <span class="coffee-actions">
-            <a class="coffee-link" href="https://www.linkedin.com/in/julia-kasanzewa/" target="_blank" rel="noopener" data-cursor="connect">linkedin</a>
-            <a class="coffee-link" href="https://buymeacoffee.com/kasanzewajc" target="_blank" rel="noopener" data-cursor="say thanks">buy me a coffee</a>
-          </span>
-        </div>
-      </div>
     </div>
    </div></div>
   </section>
@@ -782,6 +774,26 @@
     </div>
   </div>
 
+  <div class="page">
+    <div class="coffee-card reveal">
+      <span class="coffee-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="100%" height="100%">
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M14 26h30v14a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V26z"/>
+          <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M44 30h4a6 6 0 0 1 0 12h-4"/>
+          <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M22 20c0-3 3-3 3-6s-3-3-3-6M31 20c0-3 3-3 3-6s-3-3-3-6"/>
+        </svg>
+      </span>
+      <span class="coffee-text">
+        <span class="coffee-title">let's connect, one way or another</span>
+        <span class="coffee-sub">connect with me on LinkedIn, that's always the right move. or if you're just a little bit interested and want to say so, buy me a coffee instead, haha. either works.</span>
+      </span>
+      <span class="coffee-actions">
+        <a class="coffee-link" href="https://www.linkedin.com/in/julia-kasanzewa/" target="_blank" rel="noopener" data-cursor="connect">linkedin</a>
+        <a class="coffee-link" href="https://buymeacoffee.com/kasanzewajc" target="_blank" rel="noopener" data-cursor="say thanks">buy me a coffee</a>
+      </span>
+    </div>
+  </div>
+
   <div class="page footer-columns">
     <div class="footer-col">
       <div class="f-label">sitemap</div>
@@ -815,6 +827,41 @@
     <span>built solo, shipped with care</span>
   </div>
 </footer>
+
+<div class="trash-can" id="trashCan" aria-hidden="true">
+  <svg viewBox="0 0 48 56" width="100%" height="100%">
+    <path class="trash-lid" d="M6 12 H42 M18 12 V6 a2 2 0 0 1 2-2 h8 a2 2 0 0 1 2 2 v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 16 L11.5 51 a3 3 0 0 0 3 3 h19 a3 3 0 0 0 3-3 L38.5 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 23 V45 M24 23 V45 M30 23 V45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <span class="trash-hint">drop to trash</span>
+</div>
+
+<div class="trash-modal-backdrop" id="trashModal">
+  <div class="trash-modal-card">
+    <button class="trash-modal-close" type="button" id="trashModalClose" aria-label="Close">&times;</button>
+    <div class="trash-modal-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 56" width="100%" height="100%">
+        <path d="M6 12 H42 M18 12 V6 a2 2 0 0 1 2-2 h8 a2 2 0 0 1 2 2 v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 16 L11.5 51 a3 3 0 0 0 3 3 h19 a3 3 0 0 0 3-3 L38.5 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 23 V45 M24 23 V45 M30 23 V45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h3 class="trash-modal-title">hey, that's not nice.</h3>
+    <p class="trash-modal-sub">tell me what to build instead, and I'll actually read it.</p>
+    <form class="trash-form" id="trashForm">
+      <label class="trash-field">
+        <span>your email</span>
+        <input type="email" name="fromEmail" id="trashEmail" required placeholder="you@example.com">
+      </label>
+      <label class="trash-field">
+        <span>what should I build?</span>
+        <textarea name="message" id="trashMessage" rows="4" required placeholder="an app that..."></textarea>
+      </label>
+      <button type="submit" class="trash-form-submit" data-cursor="send it">send it my way</button>
+    </form>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
