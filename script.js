@@ -274,7 +274,7 @@
   });
 
   /* ---------- Trash can drag-and-drop feedback ---------- */
-  var trashCan = document.getElementById("trashCan");
+  var trashCans = document.querySelectorAll(".trash-can");
   var trashModal = document.getElementById("trashModal");
   var trashForm = document.getElementById("trashForm");
   var trashModalClose = document.getElementById("trashModalClose");
@@ -307,11 +307,11 @@
     item.addEventListener("dragend", function(){
       item.classList.remove("dragging");
       document.body.classList.remove("dragging-folder");
-      if (trashCan) trashCan.classList.remove("drag-over");
+      trashCans.forEach(function(can){ can.classList.remove("drag-over"); });
     });
   });
 
-  if (trashCan) {
+  trashCans.forEach(function(trashCan){
     trashCan.addEventListener("dragover", function(e){
       e.preventDefault();
       trashCan.classList.add("drag-over");
@@ -325,7 +325,7 @@
       document.body.classList.remove("dragging-folder");
       openTrashModal();
     });
-  }
+  });
 
   if (trashModalClose) trashModalClose.addEventListener("click", closeTrashModal);
   if (trashModal) {
