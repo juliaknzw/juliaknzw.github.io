@@ -360,9 +360,9 @@ section{padding:14vh 0;border-bottom:1px solid var(--taupe);position:relative;}
 .more-row .label{font-size:.78rem;font-weight:500;text-transform:lowercase;color:var(--greige);margin-bottom:1.2em;padding:1.4em 1.9em 0;}
 .more-list{display:grid;grid-template-columns:repeat(2,1fr);}
 @media (max-width:720px){.more-list{grid-template-columns:1fr;}}
-.more-list li{display:flex;justify-content:space-between;gap:1em;padding:1.1em 1.9em;border-top:1px solid var(--taupe);font-size:.92rem;background:var(--porcelain);}
+.more-list li{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4em 1em;padding:1.1em 1.9em;border-top:1px solid var(--taupe);font-size:.92rem;background:var(--porcelain);}
 .more-list .m-title{font-weight:500;}
-.more-list .m-tag{color:var(--greige);font-size:.76rem;text-transform:lowercase;white-space:nowrap;}
+.more-list .m-tag{color:var(--greige);font-size:.76rem;text-transform:lowercase;}
 
 /* --------------------------------- FOUNDER SPOTLIGHT --------------------------------- */
 .spotlight{background:var(--bronze-tint);border-radius:1.4em;padding:4.5em 4vw;display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:center;}
@@ -475,7 +475,7 @@ body.folder-hover .cursor-pill{display:none;}
 .process-strip .arrow-sep{color:var(--rose-deep);font-size:.85rem;}
 
 /* -------------------------------- FOLDER PROJECT BROWSER -------------------------------- */
-.folder-workspace{display:flex;align-items:flex-start;gap:1.8em;}
+.folder-workspace{display:flex;align-items:flex-end;gap:1.8em;}
 .folder-workspace .folder-grid{flex:1 1 auto;min-width:0;}
 @media (max-width:780px){
   .folder-workspace{flex-wrap:wrap;}
@@ -527,8 +527,8 @@ body.folder-hover .cursor-pill{display:none;}
   flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.6em;color:var(--greige);
   padding:.4em .6em 0;transition:filter .2s;
 }
-.trash-icon{width:3.4em;height:4.25em;display:block;transition:transform .25s var(--ease-out);}
-.trash-can .trash-lid{transform-origin:24px 17px;transition:transform .3s var(--ease-out);}
+.trash-icon{width:3.4em;height:4.4em;display:block;transition:transform .25s var(--ease-out);}
+.trash-can .trash-lid{transform-origin:24px 18px;transition:transform .3s var(--ease-out);}
 .trash-name{font-size:.78rem;font-weight:600;text-align:center;font-family:var(--font-display);text-transform:lowercase;}
 .trash-can.drag-over{filter:drop-shadow(0 4px 10px rgba(183,110,121,.35));}
 .trash-can.drag-over .trash-icon{transform:translateY(-.15em) scale(1.06);}
